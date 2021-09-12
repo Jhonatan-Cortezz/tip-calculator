@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Jhonatan Cortez">
+  <meta name="description" content="This small app is perfect for anyone starting to get to grips with JavaScript. The calculator functionality will be a nice test!">
+  <title>Tip Calculator app</title>
+  <link rel="shortcut icon" href="images/favicon-32x32.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="flex">
+    <section>
+      <div class="img-container">
+        <img src="images/logo.svg" alt="">
+      </div>
+      <div class="container">
+        <article class="calculator-data">
+          <div class="container-bill block">
+            <div>
+              <label for="bill">Bill</label>
+              <label for="bill" class="error">Can't be zero</label>
+            </div>
+            <input type="number" name="bill" id="bill" class="icon-bill">
+          </div>
+          <div class="container-percent">
+            <label for="percet">Select Tip %</label>
+            <div class="group-button column">
+              <button value="0.05">5%</button>
+              <button value="0.10">10%</button>
+              <button value="0.15">15%</button>
+              <button value="0.25">25%</button>
+              <button value="0.50">50%</button>
+              <button>Custom</button>
+            </div>
+          </div>
+          <div class="container-people block">
+            <div>
+              <label for="people">Number of People</label>
+              <label for="people" class="error">Can't be zero</label>
+            </div>
+            <input type="number" name="people" id="people" class="icon-person">
+          </div>
+        </article>
+        <article class="calculator-result">
+          <div class="result-template">
+          </div>
+          <button id="calculate" class="btn-calculate">CALCULATE</button>
+        </article>
+      </div>
+    </section>
+  </main>
+  
+  <script src="js/app.js"></script>
+</body>
+</html>
