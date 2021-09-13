@@ -1,4 +1,9 @@
 'use strict'
+import { showResultsTemplate } from "./template-result.js"
+import { 
+  removeActiveStyleButtons, addStyleActiveButton,
+  getTipAmount, getTotal, validateFields
+} from "./functions.js"
 
 /* define properties */
 const bill = document.getElementById('bill')
@@ -6,6 +11,8 @@ const qtyPeople = document.getElementById('people')
 const btnCalculate = document.getElementById('calculate')
 const groupBtnPercent = document.querySelector('.group-button')
 const contentResult = document.querySelector('.result-template')
+const errorBill = document.querySelector('.error-bill')
+const errorPeople = document.querySelector('.error-people')
 
 let tipAmout = 0.0
 let percent = 0.0
@@ -14,15 +21,20 @@ let buttons = []
 let currentButton = 0
 
 btnCalculate.addEventListener('click', () => {
+  validateFields(bill, errorBill)
+  validateFields(qtyPeople, errorPeople)
+
   if(btnCalculate.textContent === "RESET"){
-    resetData()
-    removeActiveButtons(buttons)
+    resetData(tipAmout, percent, total, bill.value, qtyPeople.value)
+    removeActiveStyleButtons(buttons)
   } else {
-    getTipAmount()
-    getTotal()
+    if(!validateFields(bill, errorBill) && !validateFields(qtyPeople, errorPeople)){
+      tipAmout = getTipAmount(tipAmout, bill.value, percent, qtyPeople.value)
+      total = getTotal(total, bill.value, qtyPeople.value, tipAmout)
+    }
   }
 
-  showResultsTemplate()
+  showResultsTemplate(tipAmout, total, contentResult)
   total?btnCalculate.innerText = "RESET" : btnCalculate.innerText = "CALCULATE"
 })
 
@@ -30,21 +42,11 @@ groupBtnPercent.addEventListener('click', event => {
   buttons = event.path[1].children
   currentButton = event.target
 
-  removeActiveButtons(buttons)
-  buttonActive(currentButton)
+  removeActiveStyleButtons(buttons)
+  addStyleActiveButton(currentButton)
 
   percent = event.target.value
 })
-
-function removeActiveButtons(buttons){
-  Array.from(buttons).forEach((button) => {
-    button.classList.remove('bg-red')
-  })
-}
-
-function buttonActive(currentButton){
-  currentButton.classList.add('bg-red')
-}
 
 function resetData(){
   tipAmout = 0.0
@@ -54,33 +56,6 @@ function resetData(){
   qtyPeople.value = 0
 }
 
-function getTipAmount(){
-  tipAmout = bill.value * percent / qtyPeople.value
-}
-
-function getTotal(){
-  total = bill.value / qtyPeople.value + tipAmout
-}
-
-function showResultsTemplate(){
-  contentResult.innerHTML = `
-    <div class="calculator-container">
-      <div class="description">
-        <p>Tip Amount</p>
-        <p>/ person</p>
-      </div>
-      <p class="amount-result">${tipAmout.toFixed(2)}</p>
-    </div>
-    <div class="calculator-container">
-      <div class="description">
-        <p>Total</p>
-        <p>/ person</p>
-      </div>
-      <p class="amount-result">${total.toFixed(2)}</p>
-    </div>
-  `
-}
-
 window.addEventListener('load', () => {
-  showResultsTemplate()
+  showResultsTemplate(tipAmout, total, contentResult)
 })
