@@ -13,6 +13,7 @@ const groupBtnPercent = document.querySelector('.group-button')
 const contentResult = document.querySelector('.result-template')
 const errorBill = document.querySelector('.error-bill')
 const errorPeople = document.querySelector('.error-people')
+const customPercetn = document.querySelector('#custom')
 
 let tipAmout = 0.0
 let percent = 0.0
@@ -41,11 +42,16 @@ btnCalculate.addEventListener('click', () => {
 groupBtnPercent.addEventListener('click', event => {
   buttons = event.path[1].children
   currentButton = event.target
-
+  console.log('eve', event.target.tagName);
   removeActiveStyleButtons(buttons)
-  addStyleActiveButton(currentButton)
+  if(event.target.tagName === 'BUTTON'){
+    addStyleActiveButton(currentButton)
+    percent = event.target.value
+  }
+})
 
-  percent = event.target.value
+customPercetn.addEventListener('keyup', () => {
+  percent = customPercetn.value / 100
 })
 
 function resetData(){
@@ -54,6 +60,7 @@ function resetData(){
   total = 0.0
   bill.value = 0
   qtyPeople.value = 0
+  customPercetn.value = 0
 }
 
-window.onload(showResultsTemplate(tipAmout, total, contentResult))
+window.onload = showResultsTemplate(tipAmout, total, contentResult)

@@ -1,0 +1,43 @@
+/* desktop design */
+@media only screen and (min-width:768px){
+  input#custom{
+    width: 10rem;
+  }
+
+  p{
+    font-size: 1.3rem;
+  }
+
+  .group-button > button{
+    width: 10.2rem;
+  }
+
+  .card-container{
+    display: flex;
+    flex-direction: row;
+    max-width: 71rem;
+  }
+
+  .card-data{
+    margin-right: 1.5rem;
+    padding-right: 1rem;
+  }
+
+  .card-result{
+    min-width: 30rem;
+    margin: 0rem;
+  }
+
+  .flex{
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .btn-calculate{
+    margin-top: 13rem;
+  }
+
+  .result-template>div:nth-child(1){
+    padding-bottom: 2rem;
+  }
+}

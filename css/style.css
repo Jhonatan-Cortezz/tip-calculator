@@ -11,23 +11,23 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
-  height: 100%;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
 }
 
 body{
   background-color: var(--light-grayish-cyan);
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+input, label, button, p{
   font-family: 'Space Mono', monospace;
-  height: 90%;
+  font-weight: 600;
 }
 
 input{
-  font-family: 'Space Mono', monospace;
   color: var(--very-dark-cyan);
-  font-weight: 600;
-  font-size: 2.5rem;
   height: 3.5rem;
   border: .2rem solid var(--ultra-light-grayish-cyan);
   background-color: var(--ultra-light-grayish-cyan);
@@ -36,6 +36,11 @@ input{
   background-repeat: no-repeat;
   background-position: 5% 50%;
   background-size: 1.1rem;
+  pointer-events: all;
+}
+
+input#custom{
+  width: 13.3rem;
 }
 
 .icon-bill{
@@ -51,19 +56,26 @@ input:focus{
   outline: none;
 }
 
-
 label{
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: var(--dark-grayish-cyan);
 }
 
-.container{
-  background-color: var(--white);
+.card{
   padding: 3rem;
   border-radius: 2rem;
+}
+
+.card-container{
+  background-color: var(--white);
   max-width: 34rem;
-  font-size: 2rem;
+}
+
+.card-result{
+  background-color: var(--very-dark-cyan);
+  margin: 2rem 0rem;
+  padding: 1.5rem 2.5rem;
 }
 
 .flex{
@@ -72,7 +84,7 @@ label{
   align-items: center;
 }
 
-.block{
+.column{
   display: flex;
   flex-direction: column;
 }
@@ -82,14 +94,7 @@ label{
   text-align: center;
 }
 
-.calculator-result{
-  background-color: var(--very-dark-cyan);
-  margin: 2rem 0rem;
-  padding: 1.5rem 2.5rem;
-  border-radius: 2rem;
-}
-
-.column{
+.block{
   display: block;
 }
 
@@ -97,27 +102,26 @@ label{
   pointer-events: none;
 }
 
-.group-button > button{
+button{
   pointer-events: all;
-  background-color: var(--very-dark-cyan);
-  font-size: 2.5rem;
-  color: var(--white);
   border-radius: .8rem;
-  /* width: 18rem; */
-  width: 13.3rem;
-  font-weight: 600;
-  padding: 1rem 0rem;
-  margin: 1rem 0rem;
-  font-family: 'Space Mono', monospace;
   border: none;
   cursor: pointer;
+  font-weight: 600;
+}
+
+.group-button > button{
+  background-color: var(--very-dark-cyan);
+  color: var(--white);
+  width: 13.3rem;
+  padding: 1rem 0rem;
+  margin: .6rem .4rem;
 }
 
 .group-button > button:hover{
   background-color: var(--primary-cyan);
   color: var(--very-dark-cyan);
   transition: background-color .4s ease-in-out;
-  cursor: pointer;
 }
 
 p{
@@ -145,24 +149,16 @@ p{
   padding: 1rem 0rem;
   color: var(--very-dark-cyan);
   background-color: var(--primary-cyan);
-  font-weight: 600;
-  border-radius: .8rem;
-  font-family: 'Space Mono', monospace;
-  font-size: 2.5rem;
-  border: none;
   margin: 2rem 0rem;
-  cursor: pointer;
 }
 
 .btn-calculate:hover{
   background-color: var(--primary-cyan);
 }
 
-.calculator-container{
-  display: flex;
+.flex-between{
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
 }
 
 .calculator-result > .calculator-container{
@@ -176,33 +172,4 @@ p{
 
 .error{
   color: var(--error);
-}
-
-/* desktop design */
-@media only screen and (min-width:768px){
-  .container{
-    display: flex;
-    flex-direction: row;
-    max-width: 81rem;
-  }
-
-  .calculator-data{
-    margin-right: 1.5rem;
-    padding-right: 1rem;
-  }
-
-  .calculator-result{
-    min-width: 30rem;
-    margin: 0rem;
-  }
-
-  .flex{
-    height: 100%;
-    overflow: hidden;
-  }
-
-  .btn-calculate{
-    margin-top: 15rem;
-  }
-
 }

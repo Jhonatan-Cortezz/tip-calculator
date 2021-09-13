@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/desktop-style.css">
 </head>
 <body>
   <main class="flex">
@@ -19,10 +20,10 @@
       <div class="img-container">
         <img src="images/logo.svg" alt="">
       </div>
-      <div class="container">
-        <article class="calculator-data">
-          <div class="container-bill block">
-            <div>
+      <div class="card card-container">
+        <article class="card-data">
+          <div class="column">
+            <div class="flex flex-between">
               <label for="bill">Bill</label>
               <label for="bill" class="error error-bill"></label>
             </div>
@@ -30,24 +31,24 @@
           </div>
           <div class="container-percent">
             <label for="percet">Select Tip %</label>
-            <div class="group-button column">
+            <div class="group-button block">
               <button value="0.05">5%</button>
               <button value="0.10">10%</button>
               <button value="0.15">15%</button>
               <button value="0.25">25%</button>
               <button value="0.50">50%</button>
-              <button>Custom</button>
+              <input type="text" name="custom" id="custom" placeholder="Custom">
             </div>
           </div>
-          <div class="container-people block">
-            <div>
+          <div class="column">
+            <div class="flex flex-between">
               <label for="people">Number of People</label>
               <label for="people" class="error error-people"></label>
             </div>
             <input type="number" name="people" id="people" class="icon-person">
           </div>
         </article>
-        <article class="calculator-result">
+        <article class="card card-result">
           <div class="result-template">
           </div>
           <button id="calculate" class="btn-calculate">CALCULATE</button>
