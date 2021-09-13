@@ -25,7 +25,7 @@ btnCalculate.addEventListener('click', () => {
   validateFields(qtyPeople, errorPeople)
 
   if(btnCalculate.textContent === "RESET"){
-    resetData(tipAmout, percent, total, bill.value, qtyPeople.value)
+    resetData()
     removeActiveStyleButtons(buttons)
   } else {
     if(!validateFields(bill, errorBill) && !validateFields(qtyPeople, errorPeople)){
@@ -56,6 +56,4 @@ function resetData(){
   qtyPeople.value = 0
 }
 
-window.addEventListener('load', () => {
-  showResultsTemplate(tipAmout, total, contentResult)
-})
+window.onload(showResultsTemplate(tipAmout, total, contentResult))
